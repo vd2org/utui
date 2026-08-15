@@ -1,0 +1,15 @@
+[package]
+name = "utui"
+version = "0.1.0"
+edition = "2024"
+description = "A small immediate-mode terminal UI composition library"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/vd2org/utui"
+readme = "README.md"
+keywords = ["terminal", "tui", "crossterm", "ui"]
+categories = ["command-line-interface"]
+exclude = [".github/*"]
+
+[dependencies]
+crossterm = "0.29.0"
+cli-truncate = "0.1.1"
