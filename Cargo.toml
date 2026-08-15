@@ -7,7 +7,7 @@ license = "MIT OR Apache-2.0"
 repository = "https://github.com/vd2org/utui"
 readme = "README.md"
 keywords = ["terminal", "tui", "crossterm", "ui"]
-categories = ["command-line-interface"]
+categories = ["command-line-interface", "command-line-utilities"]
 exclude = [".github/*"]
 
 [dependencies]
