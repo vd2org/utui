@@ -9,10 +9,10 @@ use std::io::{Write, stdout};
 use std::panic;
 
 //Initializes terminal
-pub fn init(mut w: impl Write) -> Result<(), Box<dyn Error>> {
+pub fn init(mut writer: impl Write) -> Result<(), Box<dyn Error>> {
     enable_raw_mode()?;
     execute!(
-        w,
+        writer,
         EnterAlternateScreen,
         Clear(ClearType::All),
         DisableLineWrap
@@ -21,8 +21,8 @@ pub fn init(mut w: impl Write) -> Result<(), Box<dyn Error>> {
 }
 
 /// Restores normal terminal operation
-pub fn restore(mut w: impl Write) -> Result<(), Box<dyn Error>> {
-    execute!(w, LeaveAlternateScreen, EnableLineWrap, Show)?;
+pub fn restore(mut writer: impl Write) -> Result<(), Box<dyn Error>> {
+    execute!(writer, LeaveAlternateScreen, EnableLineWrap, Show)?;
     disable_raw_mode()?;
     Ok(())
 }
