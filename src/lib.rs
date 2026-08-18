@@ -3,13 +3,15 @@
 
 mod area;
 mod context;
+mod tools;
 mod internal;
 mod tui;
 
-/// Widgets for text, vertical layout, and scrollable lists.
 pub mod widgets;
 
 pub use area::Area;
 pub use context::Context;
+pub use tools::{init, restore, install_panic_hook};
 pub use tui::Tui;
 pub use widgets::*;
+
