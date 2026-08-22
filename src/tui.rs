@@ -1,6 +1,7 @@
 use crate::area::Area;
 use crate::context::Context;
 use crossterm::SynchronizedUpdate;
+use crossterm::cursor::{Hide, Show};
 use crossterm::queue;
 use crossterm::terminal::{Clear, ClearType};
 use std::error::Error;
@@ -37,9 +38,23 @@ where
     /// # Errors
     ///
     /// Returns an error if terminal output or the root callback fails.
-    pub fn draw(&self, writer: &mut W, area: &Area, state: &S) -> Result<(), Box<dyn Error>> {
+    pub fn draw(
+        &self,
+        writer: &mut W,
+        area: &Area,
+        state: &S,
+        clear: bool,
+        cursor: bool,
+    ) -> Result<(), Box<dyn Error>> {
         writer.sync_update(|writer| {
-            queue!(writer, Clear(ClearType::All))?;
+            if clear {
+                queue!(writer, Clear(ClearType::All))?;
+            }
+            if cursor {
+                queue!(writer, Show)?;
+            } else {
+                queue!(writer, Hide)?;
+            }
             let mut ctx = Context::new(writer, *area, state);
             (self.root)(&mut ctx)
         })?
@@ -63,8 +78,8 @@ mod tests {
         let mut output = Vec::new();
 
         let area = Area::new(0, 0, 1, 1);
-        tui.draw(&mut output, &area, &())?;
-        tui.draw(&mut output, &area, &())?;
+        tui.draw(&mut output, &area, &(), true, true)?;
+        tui.draw(&mut output, &area, &(), true, true)?;
 
         let positions = |needle: &[u8]| {
             output
