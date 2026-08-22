@@ -14,3 +14,8 @@ pub use context::Context;
 pub use tools::{init, install_panic_hook, restore};
 pub use tui::Tui;
 pub use widgets::*;
+
+use std::sync::LazyLock;
+use std::time::Instant;
+/// The process-relative epoch used to animate time-based widgets.
+pub static START_TIME: LazyLock<Instant> = LazyLock::new(Instant::now);
