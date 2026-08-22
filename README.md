@@ -2,8 +2,8 @@
 
 `utui` is a small immediate-mode terminal UI library built on
 [`crossterm`](https://crates.io/crates/crossterm). It composes state-driven rendering callbacks
-with text, vertical stacks, and scrollable lists while leaving terminal setup and input handling to
-the application.
+with text, vertical and horizontal layouts, and scrollable lists while leaving terminal setup and
+input handling to the application.
 
 ```rust
 use std::{error::Error, io::{stdout, Stdout}};

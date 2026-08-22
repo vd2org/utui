@@ -1,6 +1,6 @@
 /// Scrollable list rendering.
 pub mod scroll;
-/// Constraint-based vertical layout.
+/// Constraint-based vertical and horizontal layouts.
 pub mod stack;
 /// Single-line text rendering.
 pub mod text;
