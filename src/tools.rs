@@ -8,7 +8,7 @@ use std::error::Error;
 use std::io::{Write, stdout};
 use std::panic;
 
-//Initializes terminal
+/// Initializes terminal
 pub fn init(mut writer: impl Write) -> Result<(), Box<dyn Error>> {
     enable_raw_mode()?;
     execute!(
